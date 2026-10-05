@@ -11,8 +11,8 @@
   --accent-line: rgba(0, 230, 168, 0.35);
 
   --black: #000000;
-  --bg: #121212;        /* cinza bem escuro */
-  --surface: #1a1a1a;   /* cartões */
+  --bg: #121212;
+  --surface: #1a1a1a;
   --border: #2a2a2a;
   --white: #ffffff;
   --muted: #b5b5b5;
@@ -201,17 +201,27 @@ h3 {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 6rem 0 5rem;
-  background:
-    radial-gradient(ellipse 60% 70% at 85% 0%, var(--accent-soft), transparent 70%),
-    var(--bg);
+  min-height: 510px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 0;
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hero h1 {
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
-  max-width: 14ch;
-  margin-bottom: 1.5rem;
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  max-width: 900px;
+  margin-bottom: 1.25rem;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
 }
 
 .hero h1 em {
@@ -220,16 +230,16 @@ h3 {
 }
 
 .lead {
-  max-width: 56ch;
-  font-size: 1.3rem;
+  max-width: 500px;
+  font-size: 1.2rem;
+  line-height: 1.5;
   color: var(--muted);
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
 }
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
 }
 
 /* ---------- Seções ---------- */
@@ -335,7 +345,11 @@ h3 {
   padding: 3.5rem 2rem;
   text-align: center;
   background:
-    radial-gradient(ellipse 70% 120% at 50% 0%, var(--accent-soft), transparent 70%),
+    radial-gradient(
+      ellipse 70% 120% at 50% 0%,
+      var(--accent-soft),
+      transparent 70%
+    ),
     var(--surface);
   border: 1px solid var(--accent-line);
   border-radius: var(--radius);
@@ -430,7 +444,12 @@ h3 {
   }
 
   .hero {
+    min-height: 480px;
     padding: 4rem 0 3.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 12vw, 4rem);
   }
 
   .section {
@@ -442,15 +461,13 @@ h3 {
   }
 }
 
-/* Respeita quem prefere menos animação */
+/* ---------- Menos animação ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  * {
     transition: none !important;
   }
 }
